@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha tests --timeout 5000",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +25,8 @@
     "sequelize": "^6.37.5",
     "sqlite3": "^5.1.7",
     "supertest": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

@@ -71,5 +71,7 @@ describe('User Routes', () => {
 
         const findRes = await request.get(`/users/${user.body.id}`);
         expect(findRes.status).to.equal(404);
+        // Exception during run: ReferenceError: jest is not defined Donc je vais installer jest
+
     });
 });
