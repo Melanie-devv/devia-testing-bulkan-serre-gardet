@@ -34,6 +34,7 @@ describe('Etablissement Routes', () => {
         expect(res.body.length).to.be.at.least(1); // Should have at least one etablissement
     });
 
+    // J'aurais du mettre ce code dans ce commit, pas le précédent. Pour que vous voyiez l'historique. Re désolé
     it('should retrieve an etablissement by ID', async () => {
         const etablissement = await request.post('/etablissements').send({
             nom: 'Établissement B',
