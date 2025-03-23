@@ -10,6 +10,19 @@ exports.getAllFactures = async (req, res) => {
     }
 };
 
+// Récupérer une facture par ID
+exports.getFactureById = async (req, res) => {
+    try {
+        const facture = await Facture.findByPk(req.params.id);
+        if (!facture) {
+            return res.status(404).json({ error: 'Facture non trouvée' });
+        }
+        res.json(facture);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 // Créer une nouvelle facture
 exports.createFacture = async (req, res) => {
     try {
