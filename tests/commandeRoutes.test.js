@@ -19,3 +19,12 @@ describe('POST /commandes', () => {
         expect(res.body.produit).to.equal('Livre');
     });
 });
+
+describe('GET /commandes', () => {
+    it('doit récupérer toutes les commandes', async () => {
+        const res = await request(app).get('/commandes');
+
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('array');
+    });
+});
