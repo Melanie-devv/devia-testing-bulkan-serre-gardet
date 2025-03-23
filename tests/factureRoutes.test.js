@@ -62,4 +62,18 @@ describe('Facture Routes', () => {
         expect(res.status).to.equal(200);
         expect(res.body.montant).to.equal(175.00);
     });
+
+    it('should delete a facture', async () => {
+        const facture = await request.post('/factures').send({
+            montant: 300.00,
+            date: new Date(),
+            client: 'Client D',
+        });
+
+        const res = await request.delete(`/factures/${facture.body.id}`);
+        expect(res.status).to.equal(204);
+
+        const findRes = await request.get(`/factures/${facture.body.id}`);
+        expect(findRes.status).to.equal(404);
+    });
 });
