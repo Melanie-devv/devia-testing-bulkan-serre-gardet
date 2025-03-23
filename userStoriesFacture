@@ -1,0 +1,58 @@
+user stories pour facture : 
+
+# 1.1 Récupérer toutes les factures (GET /factures)
+En tant qu'utilisateur,
+Je veux voir une liste de toutes les factures,
+Afin de pouvoir consulter les transactions effectuées.
+
+Critères d'acceptation :
+
+-Le système récupère toutes les factures depuis la base de données.
+-La réponse inclut les détails essentiels (ID, montant, date, client).
+-S'il n'y a pas de factures, le système renvoie une liste vide.
+
+# 1.2 Récupérer une facture par ID (GET /factures/:id)
+En tant qu'utilisateur,
+Je veux consulter les détails d'une facture spécifique,
+Afin de vérifier une transaction ou résoudre un problème.
+
+Critères d'acceptation :
+
+-Le système récupère une facture basée sur l'ID fourni.
+-La réponse inclut tous les détails pertinents (montant, date, client).
+-Si l'ID de la facture n'existe pas, le système renvoie une erreur 404 avec un message explicatif.
+
+# 1.3 Créer une facture (POST /factures)
+En tant qu'administrateur,
+Je veux créer une nouvelle facture,
+Afin de consigner une transaction avec les détails nécessaires.
+
+Critères d'acceptation :
+
+La requête valide contient les informations nécessaires (montant, date, client).
+-Le système crée une nouvelle facture dans la base de données.
+-Si les données saisies sont invalides (champs requis manquants), le système renvoie une erreur 400.
+-Après création, la réponse contient les détails de la facture créée.
+
+# 1.4 Modifier une facture (PUT /factures/:id)
+En tant qu'administrateur,
+Je veux mettre à jour les informations d'une facture,
+Afin de corriger une erreur ou ajouter des détails.
+
+Critères d'acceptation :
+-Le système met à jour une facture basée sur l'ID fourni et les champs de la requête.
+-Une requête valide contient uniquement les champs à modifier (montant, date, client).
+-Si l'ID de la facture n'existe pas, le système renvoie une erreur 404.
+-Si les données saisies sont invalides, le système renvoie une erreur 400.
+-Après mise à jour, la réponse contient les détails de la facture modifiée.
+
+# 1.5 Supprimer une facture (DELETE /factures/:id)
+En tant qu'administrateur,
+Je veux supprimer une facture,
+Afin de gérer les données obsolètes ou incorrectes.
+
+Critères d'acceptation :
+
+-Le système supprime une facture basée sur l'ID fourni.
+-Si l'ID de la facture n'existe pas, le système renvoie une erreur 404.
+- Après suppression, la réponse renvoie un statut 204.
