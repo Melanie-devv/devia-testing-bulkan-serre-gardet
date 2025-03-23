@@ -50,3 +50,30 @@ describe('GET /commandes/:id', () => {
         expect(res.body).to.have.property('message');
     });
 });
+
+describe('PUT /commandes/:id', () => {
+    it('doit modifier une commande existante', async () => {
+        const commande = await request(app)
+            .post('/commandes')
+            .send({ produit: 'Cahier', quantite: 3, prix: 5 });
+
+        const res = await request(app)
+            .put(`/commandes/${commande.body.id}`)
+            .send({ produit: 'Cahier Modifié', quantite: 4 });
+
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.have.property('id', commande.body.id);
+        expect(res.body.produit).to.equal('Cahier Modifié');
+        expect(res.body.quantite).to.equal(4);
+        expect(res.body.prix).to.equal(5);
+    });
+
+    it("renvoie une erreur 404 si l'ID n'existe pas", async () => {
+        const res = await request(app)
+            .put('/commandes/999')
+            .send({ produit: 'Inexistant' });
+
+        expect(res.statusCode).to.equal(404);
+        expect(res.body).to.have.property('message');
+    });
+});
