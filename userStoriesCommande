@@ -24,3 +24,15 @@ Critères d'acceptation :
 - Le système récupère toutes les commandes depuis la base de données.
 - La réponse contient un tableau des commandes.
 - Si aucune commande n'existe, le système renvoie une liste vide avec un statut 200.
+
+# 3 - Récupérer une commande par ID (GET /commandes/:id)
+
+En tant qu'utilisateur,
+Je veux consulter les détails d'une commande spécifique,
+Afin de vérifier précisément le contenu d'une commande.
+
+Critères d'acceptation :
+
+- Le système récupère la commande associée à l'ID spécifié.
+- La réponse contient toutes les informations pertinentes (produit, quantité, prix, ID).
+- Si l'ID n'existe pas, le système retourne une erreur 404 avec un message clair.
