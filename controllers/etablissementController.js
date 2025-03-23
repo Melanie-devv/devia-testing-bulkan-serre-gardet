@@ -33,3 +33,19 @@ exports.createEtablissement = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.updateEtablissement = async (req, res) => {
+    try {
+        const { nom, adresse, telephone } = req.body;
+        const etablissement = await Etablissement.findByPk(req.params.id);
+
+        if (!etablissement) {
+            return res.status(404).json({ error: 'Établissement non trouvé' });
+        }
+
+        await etablissement.update({ nom, adresse, telephone });
+        res.json(etablissement);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
