@@ -1,0 +1,59 @@
+user stories pour Établissement :
+
+# 1.1 Récupérer tous les établissements (GET /etablissements)
+En tant qu'utilisateur,
+Je veux voir une liste de tous les établissements,
+Afin de pouvoir consulter les informations sur les établissements enregistrés.
+
+Critères d'acceptation :
+
+-Le système récupère tous les établissements depuis la base de données.
+-La réponse inclut les détails essentiels (ID, nom, adresse, téléphone).
+-S'il n'y a pas d'établissements, le système renvoie une liste vide.
+
+# 1.2 Récupérer un établissement par ID (GET /etablissements/:id)
+En tant qu'utilisateur,
+Je veux consulter les détails d'un établissement spécifique,
+Afin de vérifier les informations ou résoudre un problème.
+
+Critères d'acceptation :
+
+-Le système récupère un établissement basé sur l'ID fourni.
+-La réponse inclut tous les détails pertinents (nom, adresse, téléphone).
+-Si l'ID de l'établissement n'existe pas, le système renvoie une erreur 404 avec un message explicatif.
+
+# 1.3 Créer un établissement (POST /etablissements)
+En tant qu'administrateur,
+Je veux créer un nouvel établissement,
+Afin d'enregistrer un nouvel emplacement avec les détails nécessaires.
+
+Critères d'acceptation :
+
+-La requête valide contient les informations nécessaires (nom, adresse, téléphone).
+-Le système crée un nouvel établissement dans la base de données.
+-Si les données saisies sont invalides (champs requis manquants), le système renvoie une erreur 400.
+-Après création, la réponse contient les détails de l'établissement créé.
+
+# 1.4 Modifier un établissement (PUT /etablissements/:id)
+En tant qu'administrateur,
+Je veux mettre à jour les informations d'un établissement,
+Afin de corriger une erreur ou ajouter des détails.
+
+Critères d'acceptation :
+
+-Le système met à jour un établissement basé sur l'ID fourni et les champs de la requête.
+-Une requête valide contient uniquement les champs à modifier (nom, adresse, téléphone).
+-Si l'ID de l'établissement n'existe pas, le système renvoie une erreur 404.
+-Si les données saisies sont invalides, le système renvoie une erreur 400.
+-Après mise à jour, la réponse contient les détails de l'établissement modifié.
+
+# 1.5 Supprimer un établissement (DELETE /etablissements/:id)
+En tant qu'administrateur,
+Je veux supprimer un établissement,
+Afin de gérer les données obsolètes ou incorrectes.
+
+Critères d'acceptation :
+
+-Le système supprime un établissement basé sur l'ID fourni.
+-Si l'ID de l'établissement n'existe pas, le système renvoie une erreur 404.
+-Après suppression, la réponse renvoie un statut 204.
