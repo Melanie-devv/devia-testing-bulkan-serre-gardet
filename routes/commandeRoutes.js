@@ -5,5 +5,6 @@ const commandeController = require('../controllers/commandeController');
 router.post('/', commandeController.ajouterCommande);
 router.get('/', commandeController.recupererToutesCommandes);
 router.get('/:id', commandeController.recupererCommandeParId);
+router.put('/:id', commandeController.modifierCommande);
 
 module.exports = router;

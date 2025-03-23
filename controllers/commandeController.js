@@ -30,3 +30,16 @@ exports.recupererCommandeParId = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.modifierCommande = async (req, res) => {
+    const { produit, quantite, prix } = req.body;
+    try {
+        const commandeModifiee = await Commande.modifier(req.params.id, { produit, quantite, prix });
+        if (!commandeModifiee) {
+            return res.status(404).json({ message: "Commande non trouvée." });
+        }
+        res.status(200).json(commandeModifiee);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
