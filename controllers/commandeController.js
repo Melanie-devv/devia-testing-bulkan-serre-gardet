@@ -43,3 +43,15 @@ exports.modifierCommande = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.supprimerCommande = async (req, res) => {
+    try {
+        const resultat = await Commande.supprimer(req.params.id);
+        if (!resultat) {
+            return res.status(404).json({ message: "Commande non trouvée." });
+        }
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

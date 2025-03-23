@@ -39,3 +39,15 @@ exports.modifier = (id, { produit, quantite, prix }) => {
         }
     });
 };
+
+exports.supprimer = (id) => {
+    return new Promise((resolve, reject) => {
+        const index = commandes.findIndex(c => c.id === parseInt(id));
+        if (index === -1) {
+            resolve(false);
+        } else {
+            commandes.splice(index, 1);
+            resolve(true);
+        }
+    });
+};
