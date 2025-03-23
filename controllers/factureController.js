@@ -53,3 +53,18 @@ exports.updateFacture = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+// Supprimer une facture par ID
+exports.deleteFacture = async (req, res) => {
+    try {
+        const facture = await Facture.findByPk(req.params.id);
+        if (!facture) {
+            return res.status(404).json({ error: 'Facture non trouvée' });
+        }
+
+        await facture.destroy();
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
