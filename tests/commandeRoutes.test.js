@@ -77,3 +77,23 @@ describe('PUT /commandes/:id', () => {
         expect(res.body).to.have.property('message');
     });
 });
+
+describe('DELETE /commandes/:id', () => {
+    it('doit supprimer une commande existante', async () => {
+        const commande = await request(app)
+            .post('/commandes')
+            .send({ produit: 'Sac', quantite: 1, prix: 50 });
+
+        const res = await request(app)
+            .delete(`/commandes/${commande.body.id}`);
+
+        expect(res.statusCode).to.equal(204);
+    });
+
+    it("renvoie une erreur 404 si l'ID n'existe pas", async () => {
+        const res = await request(app).delete('/commandes/999');
+
+        expect(res.statusCode).to.equal(404);
+        expect(res.body).to.have.property('message');
+    });
+});
