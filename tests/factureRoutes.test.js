@@ -15,6 +15,7 @@ describe('Facture Routes', () => {
         await sequelize.sync({ force: true }); // Reset the database
     });
 
+    // je n'aurais pas du commit ce bloc au dernier commit pour que vous voyiez l'historique. Sorry
     it('should create a new facture', async () => {
         const res = await request.post('/factures').send({
             montant: 100.50,
@@ -26,7 +27,7 @@ describe('Facture Routes', () => {
         expect(res.body).to.have.property('id');
         expect(res.body.montant).to.equal(100.50);
         expect(res.body.client).to.equal('Client A');
-    });
+    }); 
 
     it('should retrieve all factures', async () => {
         const res = await request.get('/factures');
