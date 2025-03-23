@@ -1,1 +1,26 @@
-User Story 1 : En tant qu'utilisateur, je veux pouvoir ajouter une nouvelle commande afin de passer commande auprès du service.
+# 1 - Créer une commande (POST /commandes)
+
+En tant qu'utilisateur,
+Je veux créer une nouvelle commande,
+Afin de passer commande auprès du service.
+
+Critères d'acceptation :
+
+- La requête valide contient les informations nécessaires (produit, quantité, prix).
+- Le système crée une nouvelle commande dans la base de données.
+- Si des données sont invalides ou manquantes, le système renvoie une erreur 400 avec un message clair.
+- Après création, la réponse contient les détails complets de la commande créée (dont l'ID unique).
+
+---
+
+# 2 - Récupérer toutes les commandes (GET /commandes)
+
+En tant qu'utilisateur,
+Je veux récupérer une liste de toutes les commandes existantes,
+Afin de pouvoir consulter l'historique des commandes passées.
+
+Critères d'acceptation :
+
+- Le système récupère toutes les commandes depuis la base de données.
+- La réponse contient un tableau des commandes.
+- Si aucune commande n'existe, le système renvoie une liste vide avec un statut 200.
