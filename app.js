@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const userRoutes = require('./routes/userRoutes');
+const factureRoutes = require('./routes/factureRoutes');
 
 const app = express();
 
