@@ -36,3 +36,16 @@ Critères d'acceptation :
 - Le système récupère la commande associée à l'ID spécifié.
 - La réponse contient toutes les informations pertinentes (produit, quantité, prix, ID).
 - Si l'ID n'existe pas, le système retourne une erreur 404 avec un message clair.
+
+# 4 - Modifier une commande (PUT /commandes/:id)
+
+En tant qu'utilisateur,
+Je veux modifier les informations d'une commande existante,
+Afin de corriger une erreur ou changer les détails.
+
+Critères d'acceptation :
+
+- Le système met à jour la commande correspondant à l'ID fourni avec les champs valides fournis dans la requête (produit, quantité, prix).
+- Si l'ID de la commande n'existe pas, le système renvoie une erreur 404.
+- Si les données saisies sont invalides, le système renvoie une erreur 400.
+- Après modification, la réponse contient les détails mis à jour de la commande.
