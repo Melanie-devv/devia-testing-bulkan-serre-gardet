@@ -62,5 +62,17 @@ describe('Etablissement Routes', () => {
         expect(res.body.nom).to.equal('Établissement C Modifié');
     });
 
-    
+    it('should delete an etablissement', async () => {
+        const etablissement = await request.post('/etablissements').send({
+            nom: 'Établissement D',
+            adresse: '101 Rue D',
+            telephone: '0987654321'
+        });
+
+        const res = await request.delete(`/etablissements/${etablissement.body.id}`);
+        expect(res.status).to.equal(204);
+
+        const findRes = await request.get(`/etablissements/${etablissement.body.id}`);
+        expect(findRes.status).to.equal(404);
+    });
 });
