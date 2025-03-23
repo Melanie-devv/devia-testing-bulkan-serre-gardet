@@ -9,3 +9,12 @@ exports.ajouterCommande = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.recupererToutesCommandes = async (req, res) => {
+    try {
+        const commandes = await Commande.recupererToutes();
+        res.status(200).json(commandes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

@@ -12,3 +12,9 @@ exports.creer = ({ produit, quantite, prix }) => {
         resolve(nouvelleCommande);
     });
 };
+
+exports.recupererToutes = () => {
+    return new Promise((resolve, reject) => {
+        resolve(commandes);
+    });
+};
