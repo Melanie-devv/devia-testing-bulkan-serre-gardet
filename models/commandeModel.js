@@ -18,3 +18,10 @@ exports.recupererToutes = () => {
         resolve(commandes);
     });
 };
+
+exports.recupererParId = (id) => {
+    return new Promise((resolve, reject) => {
+        const commande = commandes.find(c => c.id === parseInt(id));
+        resolve(commande);
+    });
+};
