@@ -49,3 +49,15 @@ Critères d'acceptation :
 - Si l'ID de la commande n'existe pas, le système renvoie une erreur 404.
 - Si les données saisies sont invalides, le système renvoie une erreur 400.
 - Après modification, la réponse contient les détails mis à jour de la commande.
+
+# 5 - Supprimer une commande (DELETE /commandes/:id)
+
+En tant qu'utilisateur ou administrateur,
+Je veux supprimer une commande existante,
+Afin d'annuler une commande erronée ou obsolète.
+
+Critères d'acceptation :
+
+- Le système supprime la commande correspondant à l'ID fourni.
+- Si l'ID n'existe pas, le système renvoie une erreur 404.
+- Après suppression, la réponse renvoie un statut 204 (No Content).
