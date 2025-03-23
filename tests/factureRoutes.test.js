@@ -47,4 +47,19 @@ describe('Facture Routes', () => {
         expect(res.body).to.have.property('id', facture.body.id);
         expect(res.body.client).to.equal('Client B');
     });
+
+    it('should update a facture', async () => {
+        const facture = await request.post('/factures').send({
+            montant: 150.00,
+            date: new Date(),
+            client: 'Client C',
+        });
+
+        const res = await request.put(`/factures/${facture.body.id}`).send({
+            montant: 175.00,
+        });
+
+        expect(res.status).to.equal(200);
+        expect(res.body.montant).to.equal(175.00);
+    });
 });
