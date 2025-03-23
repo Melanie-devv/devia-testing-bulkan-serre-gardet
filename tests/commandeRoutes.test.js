@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
+const { expect } = require('chai');
 
 describe('POST /commandes', () => {
     it('doit créer une nouvelle commande', async () => {
@@ -13,8 +14,8 @@ describe('POST /commandes', () => {
             .post('/commandes')
             .send(nouvelleCommande);
 
-        expect(res.statusCode).toEqual(201);
-        expect(res.body).toHaveProperty('id');
-        expect(res.body.produit).toEqual('Livre');
+        expect(res.statusCode).to.equal(201);
+        expect(res.body).to.have.property('id');
+        expect(res.body.produit).to.equal('Livre');
     });
 });

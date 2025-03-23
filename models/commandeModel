@@ -1,0 +1,14 @@
+const commandes = [];
+
+exports.creer = ({ produit, quantite, prix }) => {
+    return new Promise((resolve, reject) => {
+        const nouvelleCommande = {
+            id: commandes.length + 1,
+            produit,
+            quantite,
+            prix
+        };
+        commandes.push(nouvelleCommande);
+        resolve(nouvelleCommande);
+    });
+};
