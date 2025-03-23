@@ -36,3 +36,20 @@ exports.createFacture = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+// Mettre à jour une facture par ID
+exports.updateFacture = async (req, res) => {
+    try {
+        const { montant, date, client } = req.body;
+        const facture = await Facture.findByPk(req.params.id);
+
+        if (!facture) {
+            return res.status(404).json({ error: 'Facture non trouvée' });
+        }
+
+        await facture.update({ montant, date, client });
+        res.json(facture);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

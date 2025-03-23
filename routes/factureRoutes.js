@@ -5,5 +5,6 @@ const factureController = require('../controllers/factureController');
 router.get('/', factureController.getAllFactures);
 router.get('/:id', factureController.getFactureById);
 router.post('/', factureController.createFacture);
+router.put('/:id', factureController.updateFacture);
 
 module.exports = router;
