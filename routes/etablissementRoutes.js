@@ -6,5 +6,6 @@ router.get('/', etablissementController.getAllEtablissements);
 router.get('/:id', etablissementController.getEtablissementById);
 router.post('/', etablissementController.createEtablissement);
 router.put('/:id', etablissementController.updateEtablissement);
+router.delete('/:id', etablissementController.deleteEtablissement);
 
 module.exports = router;

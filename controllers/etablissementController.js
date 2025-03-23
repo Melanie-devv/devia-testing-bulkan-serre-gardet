@@ -49,3 +49,17 @@ exports.updateEtablissement = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.deleteEtablissement = async (req, res) => {
+    try {
+        const etablissement = await Etablissement.findByPk(req.params.id);
+        if (!etablissement) {
+            return res.status(404).json({ error: 'Établissement non trouvé' });
+        }
+
+        await etablissement.destroy();
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
