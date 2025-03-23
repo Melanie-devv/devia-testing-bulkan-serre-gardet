@@ -34,4 +34,16 @@ describe('Etablissement Routes', () => {
         expect(res.body.length).to.be.at.least(1); // Should have at least one etablissement
     });
 
+    it('should retrieve an etablissement by ID', async () => {
+        const etablissement = await request.post('/etablissements').send({
+            nom: 'Établissement B',
+            adresse: '456 Rue B',
+            telephone: '9876543210'
+        });
+
+        const res = await request.get(`/etablissements/${etablissement.body.id}`);
+        expect(res.status).to.equal(200);
+        expect(res.body).to.have.property('id', etablissement.body.id);
+        expect(res.body.nom).to.equal('Établissement B');
+    });
 });
