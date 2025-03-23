@@ -34,7 +34,6 @@ describe('Etablissement Routes', () => {
         expect(res.body.length).to.be.at.least(1); // Should have at least one etablissement
     });
 
-    // J'aurais du mettre ce code dans ce commit, pas le précédent. Pour que vous voyiez l'historique. Re désolé
     it('should retrieve an etablissement by ID', async () => {
         const etablissement = await request.post('/etablissements').send({
             nom: 'Établissement B',
@@ -47,4 +46,21 @@ describe('Etablissement Routes', () => {
         expect(res.body).to.have.property('id', etablissement.body.id);
         expect(res.body.nom).to.equal('Établissement B');
     });
+
+    it('should update an etablissement', async () => {
+        const etablissement = await request.post('/etablissements').send({
+            nom: 'Établissement C',
+            adresse: '789 Rue C',
+            telephone: '1234567890'
+        });
+
+        const res = await request.put(`/etablissements/${etablissement.body.id}`).send({
+            nom: 'Établissement C Modifié',
+        });
+
+        expect(res.status).to.equal(200);
+        expect(res.body.nom).to.equal('Établissement C Modifié');
+    });
+
+    
 });
